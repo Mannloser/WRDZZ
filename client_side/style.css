@@ -29,6 +29,8 @@ html{
   z-index: 1000;
   width: 100%;
   box-sizing: border-box;
+  transform: translateY(0);
+  transition: top 0.3s ease;
 }
 
 .navdiv{
@@ -158,7 +160,7 @@ button a{
   color: var(--background-color);
 }
 
-.filled-btn, .outline-btn {
+.filled-btn{
   font-size: 16px;
   font-weight: 600;
   border-radius: 8px;
@@ -236,7 +238,7 @@ button a{
 
 .featured-section {
   padding: 60px 80px;
-  padding-top: 100px;
+  padding-top: 50px;
   background-color: var(--background-color);
   color: var(--accent-color);
 }
@@ -245,7 +247,7 @@ button a{
   font-size: 40px;
   font-weight: 800;
   margin-bottom: 30px;
-  text-align: center;
+  text-align: left;
 }
 
 .book-grid {
@@ -359,13 +361,51 @@ button a{
   rotate: 180deg;
   
 }
+
+.featured-section::selection{
+  background-color: var(--accent-color);
+  color: var(--background-color);
+}
+.featured-section .buy-btn::selection{
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
+.featured-section .image-container::selection{
+  background-color: var(--primary-color);
+  color: var(--primary-color);
+}
 /* Featured section end */
 
 
 
 
+/* Top selling section */
 
+.TS-section {
+  padding: 60px 80px;
+  padding-top: 50px;
+  background-color: var(--background-color);
+  color: var(--accent-color);
+}
 
+.TS-section h2 {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  text-align: left;
+}
+.TS-section::selection{
+  background-color: var(--accent-color);
+  color: var(--background-color);
+}
+.TS-section .buy-btn::selection{
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
+.TS-section .image-container::selection{
+  background-color: var(--primary-color);
+  color: var(--primary-color);
+}
 
 
 
@@ -458,6 +498,13 @@ button a{
 
 
 
+.categories::selection{
+  background-color: var(--accent-color);
+  color: var(--background-color);
+}
+.categories .grid::selection{
+  background-color: var(--primary-color);
+}
 
 
 /* Footer section */
@@ -520,11 +567,7 @@ button a{
 }
 
 
-
-
-
-
-
-
-
-
+.footer::selection{
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}

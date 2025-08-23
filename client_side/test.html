@@ -1,174 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Infinite Book Carousel</title>
+  <meta charset="UTF-8">
+  <title>Color Boxes</title>
   <style>
-    :root{
-      --card-w: 180px;
-      --gap: 20px;
-      --pad: 18px;
-      --pink: #ffe6ea;
-      --btn: #ff4d4d;
-      --btn-hover:#e63e3e;
-    }
-    *{ box-sizing: border-box; }
-
-    body{
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:#fff;
-      display:flex; flex-direction:column; align-items:center;
-      padding:40px 16px; color:#111;
+    :root {
+      --primary-color: #D72323;
+      --accent-color: #3E3636;
+      --background-color: #F5EDED;
+      --black: #0C0C0C;
+      --subtext-color: #555;
     }
 
-    h2{ letter-spacing:.5px; margin-bottom:16px; }
-
-    .carousel{
-      display:flex; align-items:center; gap:12px;
+    body {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #fff;
     }
 
-    .arrow{
-      border:none; background:#000; color:#fff; width:40px; height:40px;
-      border-radius:999px; font-size:20px; cursor:pointer; line-height:40px;
-      display:grid; place-items:center;
-    }
-    .arrow:disabled{ opacity:.5; cursor:not-allowed; }
-
-    .viewport{
-      overflow:hidden;
-      width: calc(3 * var(--card-w) + 2 * var(--gap)); /* show 3 cards */
+    .box {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
-    .track{
-      display:flex;
-      gap: var(--gap);
-      will-change: transform;
-      transform: translateX(0);
-    }
-
-    .card{
-      flex: 0 0 var(--card-w);
-      background: var(--pink);
-      border-radius: 16px;
-      padding: var(--pad);
-      box-shadow: 0 6px 14px rgba(0,0,0,.08);
-      text-align:center;
-    }
-
-    .cover{
-      width:100%; height:240px; border-radius:12px; overflow:hidden;
-      margin-bottom:12px; background:#fff;
-      display:grid; place-items:center; font-weight:700;
-    }
-    .cover img{
-      width:100%; height:100%; object-fit:cover; display:block;
-    }
-
-    .title{ font-size:16px; margin:4px 0 10px; }
-
-    .btn{
-      background: var(--btn); color:#fff; border:none; padding:8px 12px;
-      border-radius:10px; cursor:pointer; font-size:14px;
-    }
-    .btn:hover{ background: var(--btn-hover); }
+    .primary { background: var(--primary-color); }
+    .accent { background: var(--accent-color); }
+    .bg { background: var(--background-color); border: 1px solid #ccc; }
+    .black { background: var(--black); }
+    .subtext { background: var(--subtext-color); }
   </style>
 </head>
 <body>
-  <h2>Pick the Latest Books</h2>
-
-  <div class="carousel">
-    <button class="arrow" id="prev" aria-label="Previous">‹</button>
-
-    <div class="viewport">
-      <div class="track" id="track">
-        <!-- Duplicate / add as many cards as you want -->
-        <div class="card">
-          <div class="cover"><img src="book1.jpg" alt="Book 1"></div>
-          <div class="title">Book Title 1</div>
-          <button class="btn">Add to Cart</button>
-        </div>
-        <div class="card">
-          <div class="cover"><img src="book2.jpg" alt="Book 2"></div>
-          <div class="title">Book Title 2</div>
-          <button class="btn">Add to Cart</button>
-        </div>
-        <div class="card">
-          <div class="cover"><img src="book3.jpg" alt="Book 3"></div>
-          <div class="title">Book Title 3</div>
-          <button class="btn">Add to Cart</button>
-        </div>
-        <div class="card">
-          <div class="cover"><img src="book4.jpg" alt="Book 4"></div>
-          <div class="title">Book Title 4</div>
-          <button class="btn">Add to Cart</button>
-        </div>
-        <div class="card">
-          <div class="cover"><img src="book5.jpg" alt="Book 5"></div>
-          <div class="title">Book Title 5</div>
-          <button class="btn">Add to Cart</button>
-        </div>
-        <div class="card">
-          <div class="cover"><img src="book6.jpg" alt="Book 6"></div>
-          <div class="title">Book Title 6</div>
-          <button class="btn">Add to Cart</button>
-        </div>
-      </div>
-    </div>
-
-    <button class="arrow" id="next" aria-label="Next">›</button>
-  </div>
-
-  <script>
-    const track = document.getElementById('track');
-    const prev  = document.getElementById('prev');
-    const next  = document.getElementById('next');
-
-    let isMoving = false;
-    let step = 0;
-    let direction = 0; // 1 => next, -1 => prev
-
-    function calcStep(){
-      const card = track.querySelector('.card');
-      const gap = parseFloat(getComputedStyle(track).gap) || 0;
-      step = card.offsetWidth + gap;
-    }
-    calcStep();
-    window.addEventListener('resize', calcStep);
-
-    next.addEventListener('click', () => {
-      if (isMoving) return;
-      isMoving = true;
-      direction = 1;
-      track.style.transition = 'transform .4s ease';
-      track.style.transform = `translateX(-${step}px)`;
-    });
-
-    prev.addEventListener('click', () => {
-      if (isMoving) return;
-      isMoving = true;
-      direction = -1;
-
-      // Pre-shift: put last at front, start offset, then animate back to 0
-      track.style.transition = 'none';
-      track.prepend(track.lastElementChild);
-      track.style.transform = `translateX(-${step}px)`;
-      // force reflow so the next transition runs
-      void track.offsetWidth;
-      track.style.transition = 'transform .4s ease';
-      track.style.transform = 'translateX(0)';
-    });
-
-    track.addEventListener('transitionend', () => {
-      if (direction === 1) {
-        // After sliding left, move first card to the end
-        track.appendChild(track.firstElementChild);
-      }
-      // Reset
-      track.style.transition = 'none';
-      track.style.transform = 'translateX(0)';
-      // allow next click
-      requestAnimationFrame(() => { isMoving = false; });
-    });
-  </script>
+  <div class="box primary"></div>
+  <div class="box accent"></div>
+  <div class="box bg"></div>
+  <div class="box black"></div>
+  <div class="box subtext"></div>
 </body>
 </html>

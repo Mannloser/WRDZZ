@@ -10,10 +10,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+	<!-- Lottie Player -->
 	<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+	<!-- JavaScript -->
+	<script src="client_side/main.js"></script>
 	
 </head>
 <body>
+	<!-- Loader -->
 	<div id="loader">
         <lottie-player
 			src="../Animations/Loader cat.json"
@@ -31,11 +37,11 @@
 		<div class="navdiv">
 			<div class="logo"><a href="index.html">WRDZZ</a></div>
 			<ul>
-				<li><a href="#" class="nav-btns">Home</a></li>
-				<li><a href="browse-books.html" class="nav-btns">Browse books</a></li>
-				<li><a href="#" class="nav-btns">Cart</a></li>
-				<li><a href="#" class="nav-btns">My orders</a></li>
-				<li><a href="#" class="nav-btns">About us</a></li>
+				<li><a href="index.html" class="nav-btns">Home</a></li>
+				<li><a href="client_side/browse-books.html" class="nav-btns">Browse books</a></li>
+				<li><a href="client_side/cart.html" class="nav-btns">Cart</a></li>
+				<li><a href="client_side/orders.html" class="nav-btns">My orders</a></li>
+				<li><a href="client_side/about.html" class="nav-btns">About us</a></li>
 				<!-- <button><a href="#">Log In</a></button>
 				<button><a href="#">Sign Up</a></button> -->
 			</ul>
@@ -144,27 +150,77 @@
   		</div>
 	</section>
 
-	<!-- <section class="products">
-		<h2 class="product-category">Best selling</h2>
-		<button class="pre-btn"><img src="../Images/Others/arrows.png" alt="" srcset=""></button>
-		<button class="nxt-btn"><img src="../Images/Others/arrows.png" alt="" srcset=""></button>
-		<div class="product-container">
-			<div class="book-card">
+	<!-- Featured section ending -->
+
+	<!-- Top selliing section starting -->
+
+	<section class="TS-section">
+  		<h2>Top sellings</h2>
+  		<div class="book-grid">
+
+    		<div class="book-card">
 				<div class="image-container">
-    				<img src="../Images/Book covers/IKIGAI.png" alt="Book">
+    				<img src="Images/Book covers/The Alchemist.png" alt="Book">
   				</div>
-				<h3>Ikigai</h3>
+				<h3>The Alchemist</h3>
+				<p>$12.99</p>
+				<div class="book-actions">
+					<button class="buy-btn">Buy now</button>
+					<button class="add-btn">Add to cart</button>
+				</div>
+    		</div>
+
+    		<div class="book-card">
+				<div class="image-container">
+    				<img src="Images/Book covers/Deep Work.png" alt="Book">
+  				</div>
+				<h3>Deep Work</h3>
+				<p>$19.99</p>
+				<div class="book-actions">
+					<button class="buy-btn">Buy now</button>
+					<button class="add-btn">Add to cart</button>
+				</div>
+    		</div>
+
+    		<div class="book-card">
+				<div class="image-container">
+    				<img src="Images/Book covers/Do epic Shit.png" alt="Book">
+  				</div>
+				<h3>Do epic Shit</h3>
 				<p>$29.99</p>
 				<div class="book-actions">
 					<button class="buy-btn">Buy now</button>
 					<button class="add-btn">Add to cart</button>
 				</div>
     		</div>
-		</div>
-	</section> -->
 
-	<!-- Featured section ending -->
+    		<div class="book-card">
+				<div class="image-container">
+    				<img src="Images/Book covers/Six of crows.png" alt="Book">
+  				</div>
+				<h3>Six of crows</h3>
+				<p>$29.99</p>
+				<div class="book-actions">
+					<button class="buy-btn">Buy now</button>
+					<button class="add-btn">Add to cart</button>
+				</div>
+    		</div>
 
+    		<div class="book-card">
+				<div class="image-container">
+    				<img src="Images/Book covers/The Starless Sea.png" alt="Book">
+  				</div>
+				<h3>The Starless Sea</h3>
+				<p>$29.99</p>
+				<div class="book-actions">
+					<button class="buy-btn">Buy now</button>
+					<button class="add-btn">Add to cart</button>
+				</div>
+    		</div>
+  		</div>
+	</section>
+
+	<!-- Top selliing section ending -->
 
 	<!-- Categories section starting -->
 
@@ -232,10 +288,10 @@
 			<div class="footer-column">
 				<h3>Quick Links</h3>
 				<a href="index.html">Home</a>
-				<a href="books.html">Browse Books</a>
-				<a href="cart.html">Cart</a>
-				<a href="orders.html">My Orders</a>
-				<a href="about.html">About Us</a>
+				<a href="client_side/browse-books.html">Browse Books</a>
+				<a href="client_side/cart.html">Cart</a>
+				<a href="client_side/orders.html">My Orders</a>
+				<a href="client_side/about.html">About Us</a>
 			</div>
 
 			<div class="footer-column">
@@ -250,8 +306,5 @@
 		</div>
 	</footer>
 
-
-
-	<script src="client_side/main.js"></script>
 </body>
 </html>
