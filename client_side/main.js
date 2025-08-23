@@ -32,3 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
     prevScroll = currentScroll;
   });
 });
+
+
+//dynamically books

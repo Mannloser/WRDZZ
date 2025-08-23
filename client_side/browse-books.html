@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WRDZZ</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="browse-books.css">
 	<!-- JavaScript -->
 	<script src="main.js"></script>
 
@@ -47,135 +48,17 @@
 	<!-- Navigation bar ending -->
 
 
-    <!-- Browse books section starts -->
+	<!-- Browse books section starts -->
 
-    <section class="featured-section">
-  		<h2>Featured Books</h2>
-  		<div class="book-grid">
-
-    		<div class="book-card">
-				<div class="image-container">
-    				<img src="../Images/Book covers/Harry potter.png" alt="Book">
-  				</div>
-				<h3>Harry potter complete edition</h3>
-				<p>$12.99</p>
-				<div class="book-actions">
-					<button class="buy-btn">Buy now</button>
-					<button class="add-btn">Add to cart</button>
-				</div>
-    		</div>
-
-    		<div class="book-card">
-				<div class="image-container">
-    				<img src="../Images/Book covers/A silent voice.png" alt="Book">
-  				</div>
-				<h3>A silent voice</h3>
-				<p>$19.99</p>
-				<div class="book-actions">
-					<button class="buy-btn">Buy now</button>
-					<button class="add-btn">Add to cart</button>
-				</div>
-    		</div>
-
-    		<div class="book-card">
-				<div class="image-container">
-    				<img src="../Images/Book covers/To Kill a Mockingbird by Harper Lee.png" alt="Book">
-  				</div>
-				<h3>To Kill a Mockingbird</h3>
-				<p>$29.99</p>
-				<div class="book-actions">
-					<button class="buy-btn">Buy now</button>
-					<button class="add-btn">Add to cart</button>
-				</div>
-    		</div>
-
-    		<div class="book-card">
-				<div class="image-container">
-    				<img src="../Images/Book covers/Atomic Habits.png" alt="Book">
-  				</div>
-				<h3>Atomic Habits</h3>
-				<p>$29.99</p>
-				<div class="book-actions">
-					<button class="buy-btn">Buy now</button>
-					<button class="add-btn">Add to cart</button>
-				</div>
-    		</div>
-
-    		<div class="book-card">
-				<div class="image-container">
-    				<img src="../Images/Book covers/IKIGAI.png" alt="Book">
-  				</div>
-				<h3>Ikigai</h3>
-				<p>$29.99</p>
-				<div class="book-actions">
-					<button class="buy-btn">Buy now</button>
-					<button class="add-btn">Add to cart</button>
-				</div>
-    		</div>
-
-    		<div class="book-card">
-				<div class="image-container">
-    				<img src="../Images/Book covers/The Alchemist.png" alt="Book">
-  				</div>
-				<h3>The Alchemist</h3>
-				<p>$29.99</p>
-				<div class="book-actions">
-					<button class="buy-btn">Buy now</button>
-					<button class="add-btn">Add to cart</button>
-				</div>
-    		</div>
-
-    		<div class="book-card">
-				<div class="image-container">
-    				<img src="../Images/Book covers/Deep Work.png" alt="Book">
-  				</div>
-				<h3>Deep work</h3>
-				<p>$29.99</p>
-				<div class="book-actions">
-					<button class="buy-btn">Buy now</button>
-					<button class="add-btn">Add to cart</button>
-				</div>
-    		</div>
-
-    		<div class="book-card">
-				<div class="image-container">
-    				<img src="../Images/Book covers/Do epic Shit.png" alt="Book">
-  				</div>
-				<h3>Do epic sh*t</h3>
-				<p>$29.99</p>
-				<div class="book-actions">
-					<button class="buy-btn">Buy now</button>
-					<button class="add-btn">Add to cart</button>
-				</div>
-    		</div>
-
-    		<div class="book-card">
-				<div class="image-container">
-    				<img src="../Images/Book covers/Six of crows.png" alt="Book">
-  				</div>
-				<h3>Six of crows</h3>
-				<p>$29.99</p>
-				<div class="book-actions">
-					<button class="buy-btn">Buy now</button>
-					<button class="add-btn">Add to cart</button>
-				</div>
-    		</div>
-
-    		<div class="book-card">
-				<div class="image-container">
-    				<img src="../Images/Book covers/The Starless Sea.png" alt="Book">
-  				</div>
-				<h3>The Starless Sea</h3>
-				<p>$29.99</p>
-				<div class="book-actions">
-					<button class="buy-btn">Buy now</button>
-					<button class="add-btn">Add to cart</button>
-				</div>
-    		</div>
+	<section class="search-section">
+  		<div class="search-container">
+			<input type="text" placeholder="Search for books..." id="bookSearch">
+    		<button type="button" onclick="searchBooks()">Search</button>
   		</div>
 	</section>
 
     <!-- Browse books section ends -->
+
 
 	<!-- Footer section starts -->
 

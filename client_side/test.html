@@ -1,45 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Color Boxes</title>
-  <style>
-    :root {
-      --primary-color: #D72323;
-      --accent-color: #3E3636;
-      --background-color: #F5EDED;
-      --black: #0C0C0C;
-      --subtext-color: #555;
-    }
+<section class="search-section">
+  <div class="search-container">
+    <input type="text" placeholder="Search for books..." id="bookSearch">
+    <button type="button" onclick="searchBooks()">Search</button>
+  </div>
+</section>
 
-    body {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background: #fff;
-    }
+<style>
+.search-section {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
 
-    .box {
-      width: 120px;
-      height: 120px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
+.search-container {
+  display: flex;
+  align-items: center;
+  border: 2px solid #800000; /* dark red */
+  border-radius: 25px;
+  overflow: hidden;
+  width: 400px;
+  max-width: 90%;
+}
 
-    .primary { background: var(--primary-color); }
-    .accent { background: var(--accent-color); }
-    .bg { background: var(--background-color); border: 1px solid #ccc; }
-    .black { background: var(--black); }
-    .subtext { background: var(--subtext-color); }
-  </style>
-</head>
-<body>
-  <div class="box primary"></div>
-  <div class="box accent"></div>
-  <div class="box bg"></div>
-  <div class="box black"></div>
-  <div class="box subtext"></div>
-</body>
-</html>
+.search-container input {
+  flex: 1;
+  border: none;
+  padding: 10px 15px;
+  outline: none;
+  font-size: 16px;
+}
+
+.search-container button {
+  background: #800000; /* dark red */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.search-container button:hover {
+  background: #a61b1b;
+}
+</style>
+
+<script>
+function searchBooks() {
+  const query = document.getElementById("bookSearch").value.toLowerCase();
+  alert("You searched for: " + query);
+  // Later: you can filter your book cards instead of alert
+}
+</script>
