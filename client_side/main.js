@@ -25,22 +25,6 @@ window.addEventListener("load", () => {
 });
 
 
-// Smooth scroll
-document.addEventListener("DOMContentLoaded", () => {
-  const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => (1 - Math.pow(1 - t, 3)),
-    smooth: true
-  });
-
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-
-  requestAnimationFrame(raf);
-});
-
 
 //nav bar scroll effect
 document.addEventListener("DOMContentLoaded", () => {
