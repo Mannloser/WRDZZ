@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-// dynamically load books
+// dynamically Featured books
 
 document.addEventListener("DOMContentLoaded", () => {
   const featuredBooks = [
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { title: "A silent voice", price: "$19.99", img: "../Images/Book covers/A silent voice.png" },
     { title: "To Kill a Mockingbird", price: "$29.99", img: "../Images/Book covers/To Kill a Mockingbird by Harper Lee.png" },
     { title: "Atomic Habits", price: "$29.99", img: "../Images/Book covers/Atomic Habits.png" },
-    { title: "Ikigai", price: "$29.99", img: "../Images/Book covers/IKIGAI.png" },
+    { title: "Ikigai", price: "$29.99", img: "../Images/Book covers/IKIGAI.png" }
   ];
 
   const featuredContainer = document.getElementById("featuredBooks");
@@ -64,6 +64,40 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
       featuredContainer.innerHTML += bookCard;
+    });
+  }
+});
+
+
+// dynamically Top selling books
+
+document.addEventListener("DOMContentLoaded", () => {
+  	const topSellingBooks = [
+		{ title: "Deep Work", price: "$21.99", img: "../Images/Book covers/Deep Work.png" },
+		{ title: "Do Epic Sh*t", price: "$18.99", img: "../Images/Book covers/Do epic Shit.png" },
+		{ title: "Gild", price: "$24.99", img: "../Images/Book covers/Gild.png" },
+		{ title: "The Starless Sea", price: "$27.99", img: "../Images/Book covers/The Starless Sea.png" },
+		{ title: "Six of Crows", price: "$22.99", img: "../Images/Book covers/Six of crows.png" },
+  	];
+
+  const TScontainer = document.getElementById("topSellingBooks");
+
+  if (TScontainer) {
+    topSellingBooks.forEach(book => {
+      const bookCard = `
+        <div class="book-card">
+          <div class="image-container">
+            <img src="${book.img}" alt="${book.title}">
+          </div>
+          <h3>${book.title}</h3>
+          <p>${book.price}</p>
+          <div class="book-actions">
+            <button class="buy-btn">Buy now</button>
+            <button class="add-btn">Add to cart</button>
+          </div>
+        </div>
+      `;
+      TScontainer.innerHTML += bookCard;
     });
   }
 });
