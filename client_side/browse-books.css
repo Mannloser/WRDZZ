@@ -1,0 +1,43 @@
+.search-section {
+    padding: 200px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-container input[type="text"] {
+    width: 400px;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+.search-container .srch-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+.books-section {
+  padding: 60px 80px;
+  padding-top: 50px;
+  background-color: var(--background-color);
+  color: var(--accent-color);
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+  gap: 50px;
+  justify-items: center;
+  padding: 20px;
+}

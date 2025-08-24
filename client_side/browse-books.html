@@ -53,10 +53,16 @@
 	<section class="search-section">
   		<div class="search-container">
 			<input type="text" placeholder="Search for books..." id="bookSearch">
-    		<button type="button" onclick="searchBooks()">Search</button>
+    		<button type="button" class="srch-btn" onclick="searchBooks()">Search</button>
   		</div>
 	</section>
 
+	<section class="books-section">
+		<div class="books-grid" id="booksContainer">
+			<!-- Books will be dynamically inserted here -->
+		</div>
+	</section>
+	
     <!-- Browse books section ends -->
 
 
@@ -84,5 +90,6 @@
 			<p>© 2025 WRDZZ. All rights reserved. | Designed & Developed by Mann</p>
 		</div>
 	</footer>
+
 </body>
 </html>
