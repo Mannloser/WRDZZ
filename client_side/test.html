@@ -3,28 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WRDZZ</title>
-  <script>
-    let frames = [
-      "W",
-      "WR",
-      "WRD",
-      "WRDZ",
-      "WRDZZ",
-      "WRDZ",
-      "WRD",
-      "WR",
-      "W"
-    ];
-
-    let i = 0;
-    setInterval(() => {
-      document.title = frames[i];
-      i = (i + 1) % frames.length;
-    }, 250); // speed (ms) → change for faster/slower
-  </script>
+  <title>Smooth Scroll</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+    }
+    .one { background: #111; color: white; }
+    .two { background: #ff0055; color: white; }
+    .three { background: #008cff; color: white; }
+  </style>
 </head>
 <body>
-  <h1>Look at the tab 👆</h1>
+  <section class="one">Section 1</section>
+  <section class="two">Section 2</section>
+  <section class="three">Section 3</section>
+
+  <script src="https://unpkg.com/@studio-freight/lenis"></script>
+  <script>
+    const lenis = new Lenis()
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+  </script>
 </body>
 </html>
