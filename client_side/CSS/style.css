@@ -181,7 +181,7 @@ button a{
 }
 
 .hero-buttons a{
-  color: var(--background-color);
+  color: var(--primary-color);
 }
 
 .filled-btn{
@@ -201,21 +201,17 @@ button a{
 
 
 .filled-btn {
-  background-color: var(--primary-color);
-  color: white;
+  background-color: var(--background-color);
   border: 2px solid var(--primary-color);
+  box-shadow: 0px 0px 0px var(--primary-color);
+
 }
 
 .filled-btn:hover {
-  background-color: transparent;
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
+  font-weight: 900;
+  box-shadow: 3px 3px 0px var(--primary-color);
 }
 
-.filled-btn a:hover {
-  background-color: transparent;
-  color: var(--primary-color);
-}
 
 
 
@@ -339,25 +335,29 @@ button a{
 .buy-btn {
   background-color: var(--primary-color);
   color: var(--background-color);
+  font-weight: 500;
 }
 
 .buy-btn:hover {
-  opacity: 0.7;
+  opacity: 0.8;
+  font-weight: 800;
 }
 
 .add-btn {
   background-color: var(--background-color);
   color: var(--primary-color);
-  /* border: 2px solid #7D0A0A; */
+  font-weight: 500;
 }
 
 .add-btn:hover {
-  opacity: 0.9;
+  opacity: 0.8;
+  font-weight: 900;
+
 }
 
 .book-card .image-container {
   overflow: hidden;
-  border-radius: 10px; /* optional, just for smooth look */
+  border-radius: 10px;
 }
 
 .book-card .image-container img {
@@ -455,9 +455,8 @@ button a{
   padding: 10px;
   width: 140px;
   font-weight: 600;
-  transition: transform 0.2s ease;
+  transition: transform all 0.3s ease;
 }
-
 
 .categories .thumb {
   background: transparent;
@@ -485,26 +484,6 @@ button a{
   border-radius: 8px;
   display: block;
   transition: transform 0.3s ease;
-  transform: scale(1.1);
-}
-
-
-.categories .thumb lottie-player {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  border-radius: 8px;
-  display: block;
-  transition: transform 0.2s ease;
-}
-
-.categories .thumb lottie-player:hover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  border-radius: 8px;
-  display: block;
-  transition: transform 2s ease;
   transform: scale(1.1);
 }
 
