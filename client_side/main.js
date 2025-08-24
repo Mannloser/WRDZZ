@@ -34,33 +34,22 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
 // dynamically load books
+
 document.addEventListener("DOMContentLoaded", () => {
-  const books = [
+  const featuredBooks = [
     { title: "Harry potter complete edition", price: "$12.99", img: "../Images/Book covers/Harry potter.png" },
     { title: "A silent voice", price: "$19.99", img: "../Images/Book covers/A silent voice.png" },
     { title: "To Kill a Mockingbird", price: "$29.99", img: "../Images/Book covers/To Kill a Mockingbird by Harper Lee.png" },
     { title: "Atomic Habits", price: "$29.99", img: "../Images/Book covers/Atomic Habits.png" },
     { title: "Ikigai", price: "$29.99", img: "../Images/Book covers/IKIGAI.png" },
-    { title: "Deep Work", price: "$21.99", img: "../Images/Book covers/Deep Work.png" },
-    { title: "Do Epic Sh*t", price: "$18.99", img: "../Images/Book covers/Do epic Shit.png" },
-    { title: "Gild", price: "$24.99", img: "../Images/Book covers/Gild.png" },
-    { title: "The Starless Sea", price: "$27.99", img: "../Images/Book covers/The Starless Sea.png" },
-    { title: "Six of Crows", price: "$22.99", img: "../Images/Book covers/Six of crows.png" },
-    { title: "The Alchemist", price: "$19.99", img: "../Images/Book covers/The Alchemist.png" }
   ];
 
-  const container = document.getElementById("booksContainer");
+  const featuredContainer = document.getElementById("featuredBooks");
 
-  // Reusable function to render books
-  function renderBooks(bookList) {
-    container.innerHTML = "";
-    if (bookList.length === 0) {
-      container.innerHTML = `<p>No books found 😢</p>`;
-      return;
-    }
-
-    bookList.forEach(book => {
+  if (featuredContainer) {
+    featuredBooks.forEach(book => {
       const bookCard = `
         <div class="book-card">
           <div class="image-container">
@@ -74,7 +63,54 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
       `;
-      container.innerHTML += bookCard;
+      featuredContainer.innerHTML += bookCard;
+    });
+  }
+});
+
+
+
+// dynamically load books
+document.addEventListener("DOMContentLoaded", () => {
+  	const books = [
+		{ title: "Harry potter complete edition", price: "$12.99", img: "../Images/Book covers/Harry potter.png" },
+		{ title: "A silent voice", price: "$19.99", img: "../Images/Book covers/A silent voice.png" },
+		{ title: "To Kill a Mockingbird", price: "$29.99", img: "../Images/Book covers/To Kill a Mockingbird by Harper Lee.png" },
+		{ title: "Atomic Habits", price: "$29.99", img: "../Images/Book covers/Atomic Habits.png" },
+		{ title: "Ikigai", price: "$29.99", img: "../Images/Book covers/IKIGAI.png" },
+		{ title: "Deep Work", price: "$21.99", img: "../Images/Book covers/Deep Work.png" },
+		{ title: "Do Epic Sh*t", price: "$18.99", img: "../Images/Book covers/Do epic Shit.png" },
+		{ title: "Gild", price: "$24.99", img: "../Images/Book covers/Gild.png" },
+		{ title: "The Starless Sea", price: "$27.99", img: "../Images/Book covers/The Starless Sea.png" },
+		{ title: "Six of Crows", price: "$22.99", img: "../Images/Book covers/Six of crows.png" },
+		{ title: "The Alchemist", price: "$19.99", img: "../Images/Book covers/The Alchemist.png" }
+  	];
+
+  const container = document.getElementById("booksContainer");
+
+  // Reusable function to render books
+  function renderBooks(bookList) {
+    container.innerHTML = "";
+    if (bookList.length === 0) {
+		container.innerHTML = `<p>No books found 😢</p>`;
+		return;
+    }
+
+    bookList.forEach(book => {
+		const bookCard = `
+			<div class="book-card">
+				<div class="image-container">
+					<img src="${book.img}" alt="${book.title}">
+				</div>
+				<h3>${book.title}</h3>
+				<p>${book.price}</p>
+				<div class="book-actions">
+					<button class="buy-btn">Buy now</button>
+					<button class="add-btn">Add to cart</button>
+				</div>
+			</div>
+		`;
+      	container.innerHTML += bookCard;
     });
   }
 
@@ -83,9 +119,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Search function
   window.searchBooks = function() {
-    const query = document.getElementById("bookSearch").value.toLowerCase();
-    const filteredBooks = books.filter(book =>
-      book.title.toLowerCase().includes(query)
+	const query = document.getElementById("bookSearch").value.toLowerCase();
+	const filteredBooks = books.filter(book =>
+      	book.title.toLowerCase().includes(query)
     );
     renderBooks(filteredBooks);
   };
