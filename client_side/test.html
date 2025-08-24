@@ -1,54 +1,30 @@
-<section class="search-section">
-  <div class="search-container">
-    <input type="text" placeholder="Search for books..." id="bookSearch">
-    <button type="button" onclick="searchBooks()">Search</button>
-  </div>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WRDZZ</title>
+  <script>
+    let frames = [
+      "W",
+      "WR",
+      "WRD",
+      "WRDZ",
+      "WRDZZ",
+      "WRDZ",
+      "WRD",
+      "WR",
+      "W"
+    ];
 
-<style>
-.search-section {
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
-}
-
-.search-container {
-  display: flex;
-  align-items: center;
-  border: 2px solid #800000; /* dark red */
-  border-radius: 25px;
-  overflow: hidden;
-  width: 400px;
-  max-width: 90%;
-}
-
-.search-container input {
-  flex: 1;
-  border: none;
-  padding: 10px 15px;
-  outline: none;
-  font-size: 16px;
-}
-
-.search-container button {
-  background: #800000; /* dark red */
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: 0.3s;
-}
-
-.search-container button:hover {
-  background: #a61b1b;
-}
-</style>
-
-<script>
-function searchBooks() {
-  const query = document.getElementById("bookSearch").value.toLowerCase();
-  alert("You searched for: " + query);
-  // Later: you can filter your book cards instead of alert
-}
-</script>
+    let i = 0;
+    setInterval(() => {
+      document.title = frames[i];
+      i = (i + 1) % frames.length;
+    }, 250); // speed (ms) → change for faster/slower
+  </script>
+</head>
+<body>
+  <h1>Look at the tab 👆</h1>
+</body>
+</html>

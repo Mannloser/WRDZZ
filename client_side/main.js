@@ -1,3 +1,23 @@
+// Animated Website title
+let frames = [
+      "W",
+      "WR",
+      "WRD",
+      "WRDZ",
+      "WRDZZ",
+      "WRDZ",
+      "WRD",
+      "WR",
+      "W"
+    ];
+
+    let i = 0;
+    setInterval(() => {
+      document.title = frames[i];
+      i = (i + 1) % frames.length;
+    }, 250);
+
+// loader
 window.addEventListener("load", () => {
     setTimeout(() => {
     document.getElementById("loader").style.display = "none";
