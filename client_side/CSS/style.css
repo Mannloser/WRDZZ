@@ -6,7 +6,7 @@
 }
 
 :root {
-  --primary-color: #7D0A0A;   /* Crimson Blaze */
+  --primary-color: #7d0a0a;   /* Crimson Blaze */
   --background-color: #FEF9E1; /* Varden */
   --accent-color: #09122C;    /* Cosmos Blue */
 }
@@ -186,7 +186,7 @@ button a{
 
 .filled-btn{
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 800;
   border-radius: 8px;
   margin: 0px;
   cursor: pointer;
@@ -203,13 +203,14 @@ button a{
 .filled-btn {
   background-color: var(--background-color);
   border: 2px solid var(--primary-color);
-  box-shadow: 0px 0px 0px var(--primary-color);
+  box-shadow: 3px 3px 0px var(--primary-color);
 
 }
 
 .filled-btn:hover {
-  font-weight: 900;
-  box-shadow: 3px 3px 0px var(--primary-color);
+  font-weight: 500;
+  background-color: transparent;
+  box-shadow: 0px 0px 0px var(--primary-color);
 }
 
 
