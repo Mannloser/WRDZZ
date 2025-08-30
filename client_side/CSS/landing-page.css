@@ -1,0 +1,13 @@
+.product{
+    width: 100%;
+    height: 400px;
+    margin-top: 78px;
+    background-color: blue;
+    display: flex;
+}
+.product-container{
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+}

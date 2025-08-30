@@ -208,7 +208,8 @@ button a{
 }
 
 .filled-btn:hover {
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 15.5px;
   background-color: transparent;
   box-shadow: 0px 0px 0px var(--primary-color);
 }
@@ -340,7 +341,7 @@ button a{
 }
 
 .buy-btn:hover {
-  opacity: 0.8;
+  opacity: 0.9;
   font-weight: 800;
 }
 

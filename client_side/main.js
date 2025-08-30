@@ -17,6 +17,10 @@ let frames = [
       i = (i + 1) % frames.length;
     }, 250);
 
+
+
+
+    
 // loader
 window.addEventListener("load", () => {
     setTimeout(() => {

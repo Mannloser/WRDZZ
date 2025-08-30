@@ -3,39 +3,238 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smooth Scroll</title>
+  <title>Featured Books Carousel</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
+    :root {
+      --primary-color: #D72323;
+      --accent-color: #3E3636;
+      --background-color: #F5EDED;
     }
-    section {
-      height: 100vh;
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--background-color);
+      margin: 0;
+      padding: 0;
+    }
+
+    .featured-section {
+      padding: 60px 80px;
+      padding-top: 50px;
+      background-color: var(--background-color);
+      color: var(--accent-color);
+    }
+
+    .featured-section h2 {
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    /* ===== Carousel ===== */
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+    }
+
+    .book-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      width: 50%;
+      height: 500px;
+    }
+
+    .book-list li {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      opacity: 1;
+      transform: scale(0.85);
+      transition: all 0.6s ease;
       display: flex;
       justify-content: center;
-      align-items: center;
-      font-size: 3rem;
     }
-    .one { background: #111; color: white; }
-    .two { background: #ff0055; color: white; }
-    .three { background: #008cff; color: white; }
+
+    .book-list li.act {
+      opacity: 1;
+      transform: scale(1);
+      z-index: 2;
+    }
+    .book-list li.prev {
+      opacity: 0.25;
+      transform: translateX(-50%) scale(0.85);
+      z-index: 1;
+    }
+    .book-list li.next {
+      opacity: 0.25;
+      transform: translateX(50%) scale(0.85);
+      z-index: 1;
+    }
+
+    /* ===== Book Cards ===== */
+    .book-card {
+      background-color: #fdf6d8;
+      border-radius: 12px;
+      width: 250px;
+      padding: 15px;
+      box-shadow: 0px 0px 0px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0px 5px 3px rgba(0,0,0,0.1);
+    }
+
+    .book-card img {
+      border-radius: 8px;
+      object-fit: cover;
+      height: 320px;
+      width: 100%;
+      transition: 0.3s ease;
+    }
+
+    .book-card h3 {
+      font-size: 18px;
+      margin: 12px 0 6px;
+    }
+
+    .book-card p {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .book-actions {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      margin-top: 10px;
+      justify-content: center;
+    }
+
+    .book-actions button {
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      min-width: 100px;
+      text-align: center;
+      padding: 6px;
+      border: none;
+    }
+
+    .buy-btn {
+      background-color: var(--primary-color);
+      color: var(--background-color);
+    }
+    .buy-btn:hover {
+      opacity: 0.9;
+    }
+
+    .add-btn {
+      background-color: var(--background-color);
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+    }
+    .add-btn:hover {
+      opacity: 0.8;
+    }
+
+    .book-card .image-container {
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    .book-card .image-container img {
+      transition: transform 0.3s ease;
+    }
+    .book-card:hover .image-container img {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
-  <section class="one">Section 1</section>
-  <section class="two">Section 2</section>
-  <section class="three">Section 3</section>
+  <section class="featured-section" id="featured">
+    <h2>Featured Books</h2>
+    <div class="carousel">
+      <ul class="book-list" id="featuredBooks">
+        <!-- JS will inject books -->
+      </ul>
+    </div>
+  </section>
 
-  <script src="https://unpkg.com/@studio-freight/lenis"></script>
   <script>
-    const lenis = new Lenis()
+    const books = [
+      { img: "https://placehold.co/200x300/FFB6C1/000?text=Book+1", title: "The Silent Dawn", price: "$15.99" },
+      { img: "https://placehold.co/200x300/ADD8E6/000?text=Book+2", title: "Shadows of Time", price: "$12.49" },
+      { img: "https://placehold.co/200x300/90EE90/000?text=Book+3", title: "Beyond the Stars", price: "$18.75" },
+      { img: "https://placehold.co/200x300/FFA07A/000?text=Book+4", title: "Whispers in Wind", price: "$9.99" },
+      { img: "https://placehold.co/200x300/DDA0DD/000?text=Book+5", title: "Dreamer’s Path", price: "$20.00" }
+    ];
 
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
+    function addFeaturedBooks(books) {
+      const container = document.getElementById("featuredBooks");
+      container.innerHTML = "";
+
+      books.forEach(book => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <div class="book-card">
+            <div class="image-container">
+              <img src="${book.img}" alt="${book.title}">
+            </div>
+            <h3>${book.title}</h3>
+            <p>${book.price}</p>
+            <div class="book-actions">
+              <button class="buy-btn">Buy now</button>
+              <button class="add-btn">Add to cart</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(li);
+      });
+
+      initCarousel();
     }
 
-    requestAnimationFrame(raf)
+    function initCarousel() {
+      const list = document.querySelector('.book-list');
+      let items = list.querySelectorAll('li');
+
+      function setClasses() {
+        items.forEach(el => el.className = '');
+        if (items.length > 2) {
+          items[0].classList.add('prev');
+          items[1].classList.add('act');
+          items[2].classList.add('next');
+        }
+      }
+
+      function next() {
+        list.appendChild(items[0]);
+        items = list.querySelectorAll('li');
+        setClasses();
+      }
+
+      function prev() {
+        list.insertBefore(items[items.length - 1], items[0]);
+        items = list.querySelectorAll('li');
+        setClasses();
+      }
+
+      setClasses();
+      setInterval(next, 3000); // autoplay every 3s
+    }
+
+    // init with sample data
+    addFeaturedBooks(books);
   </script>
 </body>
 </html>
