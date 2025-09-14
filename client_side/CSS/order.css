@@ -1,0 +1,88 @@
+*{
+      font-family: outfit;
+
+}
+.orders-main::selection{
+    color: var(--background-color);
+    background-color: var(--primary-color);
+}
+.orders-main {
+    padding: 3rem 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 150px;
+}
+
+
+.orders-title {
+    font-family: "Archivo Black", sans-serif;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--accent-color);
+}
+
+
+.orders-table-wrapper {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    overflow-x: auto;
+}
+
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+.orders-table th,
+.orders-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+}
+
+
+.orders-table thead {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+
+.orders-table tbody tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+
+.status {
+    font-weight: 600;
+}
+
+
+.status.shipped {
+    color: #2563eb;
+}
+
+.status.processing {
+    color: #d97706;
+}
+
+.status.delivered {
+    color: #16a34a;
+}
+
+.status.cancelled {
+    color: #dc2626;
+}
+
+
+@media(max-width:600px) {
+
+    .orders-table th,
+    .orders-table td {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+    }
+}   

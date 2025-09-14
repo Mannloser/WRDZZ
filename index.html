@@ -169,27 +169,46 @@
 	<!-- Footer section starts -->
 
 	<footer class="footer">
-		<div class="footer-container">
+		<div class="footer-inner">
+			<div class="footer-brand">
+				<a class="logo" href="index.html"><span style="font-family: archivo black; color: var(--background-color); font-size: 36px;">WRDZZ</span></a>
+				<p class="tagline">Books, quotes & vibes — curated by Mann</p>
+			</div>
+	
+	
 			<div class="footer-column">
 				<h3>Quick Links</h3>
-				<a href="index.html">Home</a>
-				<a href="client_side/browse-books.html">Browse Books</a>
-				<a href="client_side/cart.html">Cart</a>
-				<a href="client_side/orders.html">My Orders</a>
-				<a href="client_side/about.html">About Us</a>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="./client_side/browse-books.html">Browse Books</a></li>
+					<li><a href="./client_side/cart.html">Cart</a></li>
+					<li><a href="./client_side/orders.html">My Orders</a></li>
+					<li><a href="./client_side/about.html">About Us</a></li>
+				</ul>
 			</div>
-
+	
+	
 			<div class="footer-column">
-				<h3>Social Media</h3>
-				<a href="https://www.instagram.com/manndoesedits" target="_blank">Instagram</a>
-				<a href="https://github.com/Mannloser" target="_blank">GitHub</a>
+				<h3>Follow</h3>
+				<ul class="social-list">
+					<li>
+						<a href="https://www.instagram.com/manndoesedits" target="_blank" aria-label="Instagram">Instagram</a>
+					</li>
+					<li>
+						<a href="https://github.com/Mannloser" target="_blank" aria-label="GitHub">GitHub</a>
+					</li>
+				</ul>
 			</div>
 		</div>
-
+	
+	
 		<div class="footer-bottom">
-			<p>© 2025 WRDZZ. All rights reserved. | Designed & Developed by Mann</p>
+			<p>© <span id="year">2025</span> WRDZZ. All rights reserved. | Designed &amp; Developed by Mann</p>
 		</div>
-	</footer>
+	
+	
+		<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+	</footer >
 
 </body>
 </html>

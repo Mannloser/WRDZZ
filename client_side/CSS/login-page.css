@@ -1,0 +1,110 @@
+/* Reset + global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: #f9f6e7; /* WRDZZ beige background */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------- NAVBAR ---------------- */
+
+.navbar .navdiv {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centered logo */
+}
+
+
+
+/* ---------------- LOGIN PAGE ---------------- */
+.login-section {
+  flex: 1; /* take remaining height below navbar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 80px; /* space under navbar */
+}
+
+.login-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+
+/* Heading */
+.login-container h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #6c0c0c;
+}
+
+/* Labels */
+.login-container label {
+  display: block;
+  text-align: left;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Inputs */
+.login-container input {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.2s ease;
+}
+
+.login-container input:focus {
+  border-color: #6c0c0c;
+  outline: none;
+}
+
+/* Button */
+.login-container button {
+  width: 100%;
+  padding: 0.8rem;
+  background: #6c0c0c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.login-container button:hover {
+  background: #520909;
+}
+
+/* Extra text */
+.login-container p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.login-container a {
+  color: #6c0c0c;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
+}

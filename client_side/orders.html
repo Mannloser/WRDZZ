@@ -1,84 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WRDZZ</title>
-    <link rel="stylesheet" href="./CSS/style.css">
-	<!-- Icon -->
-		<link rel="icon" type="image/png" href="../Images/logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WRDZZ</title>
+  <link rel="stylesheet" href="./CSS/style.css">
+  <link rel="stylesheet" href="./CSS/order.css">
+  <!-- Icon -->
+  <link rel="icon" type="image/png" href="../Images/logo.png">
 
 
-	<!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@100..900&display=swap"
+    rel="stylesheet">
 
-	<!-- Lottie Player -->
-	<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <!-- Lottie Player -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
-	<!-- JavaScript -->
-	<script src="main.js"></script>
-	
+  <!-- JavaScript -->
+  <script src="main.js"></script>
+
 </head>
+
 <body>
-	<!-- Loader -->
-	<div id="loader">
-        <lottie-player
-			src="../Animations/Loader cat.json"
-			background="transparent"
-			speed="1"
-			style="width: 200px; height: 200px;"
-			loop
-			autoplay>
-        </lottie-player>
+  <!-- Loader -->
+  <div id="loader">
+    <lottie-player src="../Animations/Loader cat.json" background="transparent" speed="1"
+      style="width: 200px; height: 200px;" loop autoplay>
+    </lottie-player>
+  </div>
+
+  <!-- Navigation bar starting-->
+
+  <nav class="navbar">
+    <div class="navdiv">
+      <div class="logo"><a href="../index.html">WRDZZ</a></div>
+      <ul>
+        <li><a href="../index.html" class="nav-btns">Home</a></li>
+        <li><a href="browse-books.html" class="nav-btns">Browse books</a></li>
+        <li><a href="cart.html" class="nav-btns">Cart</a></li>
+        <li><a href="orders.html" class="nav-btns">My orders</a></li>
+        <li><a href="about.html" class="nav-btns">About us</a></li>
+        <!-- <button><a href="#">Log In</a></button>
+				<button><a href="#">Sign Up</a></button> -->
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Navigation bar ending -->
+
+  <main class="orders-main">
+    <h1 class="orders-title">My Orders</h1>
+    <div class="orders-table-wrapper">
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th>Book title</th>
+            <th>Price</th>
+            <th>Order ID</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Harry Potter Complete Edition</td>
+            <td>₹1299</td>
+            <td>#10001</td>
+            <td class="status shipped">Shipped</td>
+          </tr>
+          <tr>
+            <td>A Silent Voice</td>
+            <td>₹899</td>
+            <td>#10002</td>
+            <td class="status processing">Processing</td>
+          </tr>
+          <tr>
+            <td>To Kill a Mockingbird</td>
+            <td>₹999</td>
+            <td>#10003</td>
+            <td class="status delivered">Delivered</td>
+          </tr>
+          <tr>
+            <td>Atomic Habits</td>
+            <td>₹1099</td>
+            <td>#10004</td>
+            <td class="status cancelled">Cancelled</td>
+          </tr>
+          <tr>
+            <td>Ikigai</td>
+            <td>₹899</td>
+            <td>#10005</td>
+            <td class="status delivered">Delivered</td>
+          </tr>
+          <tr>
+            <td>Deep Work</td>
+            <td>₹1099</td>
+            <td>#10006</td>
+            <td class="status shipped">Shipped</td>
+          </tr>
+          <tr>
+            <td>Do Epic Sh*t</td>
+            <td>₹799</td>
+            <td>#10007</td>
+            <td class="status processing">Processing</td>
+          </tr>
+          <tr>
+            <td>Gild</td>
+            <td>₹999</td>
+            <td>#10008</td>
+            <td class="status delivered">Delivered</td>
+          </tr>
+          <tr>
+            <td>The Starless Sea</td>
+            <td>₹1199</td>
+            <td>#10009</td>
+            <td class="status shipped">Shipped</td>
+          </tr>
+          <tr>
+            <td>The Alchemist</td>
+            <td>₹899</td>
+            <td>#10010</td>
+            <td class="status processing">Processing</td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </main>
+
+  <!-- Footer section starts -->
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="logo" href="../index.html"><span
+            style="font-family: archivo black; color: var(--background-color); font-size: 36px;">WRDZZ</span></a>
+        <p class="tagline">Books, quotes & vibes — curated by Mann</p>
+      </div>
+
+
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="browse-books.html">Browse Books</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="orders.html">My Orders</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-column">
+        <h3>Follow</h3>
+        <ul class="social-list">
+          <li>
+            <a href="https://www.instagram.com/manndoesedits" target="_blank" aria-label="Instagram">Instagram</a>
+          </li>
+          <li>
+            <a href="https://github.com/Mannloser" target="_blank" aria-label="GitHub">GitHub</a>
+          </li>
+        </ul>
+      </div>
     </div>
 
-	<!-- Navigation bar starting-->
 
-    <nav class="navbar">
-		<div class="navdiv">
-			<div class="logo"><a href="../index.html">WRDZZ</a></div>
-			<ul>
-				<li><a href="../index.html" class="nav-btns">Home</a></li>
-				<li><a href="browse-books.html" class="nav-btns">Browse books</a></li>
-				<li><a href="cart.html" class="nav-btns">Cart</a></li>
-				<li><a href="orders.html" class="nav-btns">My orders</a></li>
-				<li><a href="about.html" class="nav-btns">About us</a></li>
-				<!-- <button><a href="#">Log In</a></button>
-				<button><a href="#">Sign Up</a></button> -->
-			</ul>
-		</div>
-	</nav>
-
-	<!-- Navigation bar ending -->
+    <div class="footer-bottom">
+      <p>© <span id="year">2025</span> WRDZZ. All rights reserved. | Designed &amp; Developed by Mann</p>
+    </div>
 
 
-
-	<!-- Footer section starts -->
-
-	<footer class="footer">
-		<div class="footer-container">
-			<div class="footer-column">
-				<h3>Quick Links</h3>
-				<a href="../index.html">Home</a>
-				<a href="browse-books.html">Browse Books</a>
-				<a href="cart.html">Cart</a>
-				<a href="orders.html">My Orders</a>
-				<a href="about.html">About Us</a>
-			</div>
-
-			<div class="footer-column">
-				<h3>Social Media</h3>
-				<a href="https://www.instagram.com/manndoesedits" target="_blank">Instagram</a>
-				<a href="https://github.com/Mannloser" target="_blank">GitHub</a>
-			</div>
-		</div>
-
-		<div class="footer-bottom">
-			<p>© 2025 WRDZZ. All rights reserved. | Designed & Developed by Mann</p>
-		</div>
-	</footer>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  </footer>
 
 </body>
+
 </html>

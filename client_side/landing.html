@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WRDZZ</title>
-    <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/landing-page.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WRDZZ</title>
+	<link rel="stylesheet" href="./CSS/style.css">
+	<link rel="stylesheet" href="./CSS/landing-page.css">
 
 	<!-- Icon -->
 	<link rel="icon" type="image/png" href="../Images/logo.png">
 
 	<!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@100..900&display=swap"
+		rel="stylesheet">
 
 	<!-- Lottie Player -->
 	<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 	<!-- JavaScript -->
 	<script src="main.js"></script>
-	
+
 </head>
+
 <body>
 	<!-- Loader -->
 	<div id="loader">
-        <lottie-player
-			src="../Animations/Loader cat.json"
-			background="transparent"
-			speed="1"
-			style="width: 200px; height: 200px;"
-			loop
-			autoplay>
-        </lottie-player>
-    </div>
+		<lottie-player src="../Animations/Loader cat.json" background="transparent" speed="1"
+			style="width: 200px; height: 200px;" loop autoplay>
+		</lottie-player>
+	</div>
 
 	<!-- Navigation bar starting-->
 
-    <nav class="navbar">
+	<nav class="navbar">
 		<div class="navdiv">
 			<div class="logo"><a href="../index.html">WRDZZ</a></div>
 			<ul>
@@ -55,21 +53,78 @@
 	<!-- Navigation bar ending -->
 
 	<!-- Landing page section starts -->
-	<section class="product">
-		<div class="product-container">
-			<div class="product-carousal">
 
-			</div>
-			<div class="product-description">
+	<div class="card">
+		<!-- Left side -->
+		<div class="images">
+			<div class="carousel">
+				<div class="carousel-viewport">
+					<div class="carousel-track">
+						<div class="slide"><img src="../Images/Book covers/Harry potter.png" alt="Book 1"></div>
+						<div class="slide"><img src="../Images/Book covers/Harry potter.png" alt="Book 2"></div>
+						<div class="slide"><img src="../Images/Book covers/Harry potter.png" alt="Book 3"></div>
+						<div class="slide"><img src="../Images/Book covers/Harry potter.png" alt="Book 4"></div>
+					</div>
+				</div>
 
+				<button class="carousel-btn prev" aria-label="Previous">❮</button>
+				<button class="carousel-btn next" aria-label="Next">❯</button>
+
+				<div class="carousel-dots" role="tablist"></div>
 			</div>
+		</div>
+
+		<!-- Right side -->
+		<div class="details">
+			<h4>J.K. Rowling</h4>
+			<h1>Harry Potter and the Philosopher's Stone</h1>
+			<p>Harry Potter, an orphan raised by his cruel aunt and uncle, discovers on his 11th birthday that he’s a wizard. He’s whisked away to Hogwarts School of Witchcraft and Wizardry, where he makes friends like Hermione Granger and Ron Weasley and learns about magic, Quidditch, and the wizarding world. Harry soon uncovers a dark mystery: someone is trying to steal the Philosopher’s Stone, a magical object that grants immortality and unlimited wealth. With courage, cleverness, and the help of his friends, Harry faces challenges, outsmarts danger, and protects the Stone from falling into the hands of the evil wizard Voldemort. The story is a thrilling tale of friendship, bravery, and the beginning of Harry’s destiny in the battle between good and evil.</p>
+
+
+			<div class="price">
+				<h2>$125.00</h2>
+				<span class="discount">50%</span>
+			</div>
+			<div class="old-price">$250.00</div>
+
+			<div class="actions">
+				<div class="quantity">
+					<button>-</button>
+					<span>0</span>
+					<button>+</button>
+				</div>
+
+				
+				<button class="add-cart">🛒 Add to cart</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Featured section starting -->
+
+	<section class="featured-section" id="featured">
+		<h2>More like this</h2>
+		<div class="book-grid" id="featuredBooks">
+			<!-- JS will inject books here -->
 		</div>
 	</section>
 
+	<!-- Featured section ending -->
+
+	<!-- Top selliing section starting -->
+
+	<section class="TS-section">
+		<h2>Top sellings</h2>
+		<div class="book-grid" id="topSellingBooks">
+			<!-- JS will inject books here -->
+		</div>
+	</section>
+
+	<!-- Top selliing section ending -->
 
 	<!-- Footer section starts -->
 
-	<footer class="footer">
+	<!-- <footer class="footer">
 		<div class="footer-container">
 			<div class="footer-column">
 				<h3>Quick Links</h3>
@@ -90,7 +145,52 @@
 		<div class="footer-bottom">
 			<p>© 2025 WRDZZ. All rights reserved. | Designed & Developed by Mann</p>
 		</div>
+	</footer> -->
+
+	<footer class="footer">
+		<div class="footer-inner">
+			<div class="footer-brand">
+				<a class="logo" href="../index.html"><span
+						style="font-family: archivo black; color: var(--background-color); font-size: 36px;">WRDZZ</span></a>
+				<p class="tagline">Books, quotes & vibes — curated by Mann</p>
+			</div>
+
+
+			<div class="footer-column">
+				<h3>Quick Links</h3>
+				<ul>
+					<li><a href="../index.html">Home</a></li>
+					<li><a href="browse-books.html">Browse Books</a></li>
+					<li><a href="cart.html">Cart</a></li>
+					<li><a href="orders.html">My Orders</a></li>
+					<li><a href="about.html">About Us</a></li>
+				</ul>
+			</div>
+
+
+			<div class="footer-column">
+				<h3>Follow</h3>
+				<ul class="social-list">
+					<li>
+						<a href="https://www.instagram.com/manndoesedits" target="_blank"
+							aria-label="Instagram">Instagram</a>
+					</li>
+					<li>
+						<a href="https://github.com/Mannloser" target="_blank" aria-label="GitHub">GitHub</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+
+		<div class="footer-bottom">
+			<p>© <span id="year">2025</span> WRDZZ. All rights reserved. | Designed &amp; Developed by Mann</p>
+		</div>
+
+
+		<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 	</footer>
 
 </body>
+
 </html>
