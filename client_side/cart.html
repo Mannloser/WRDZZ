@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WRDZZ</title>
-    <link rel="stylesheet" href="./CSS/style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WRDZZ</title>
+	<link rel="stylesheet" href="./CSS/style.css">
+	<link rel="stylesheet" href="./CSS/cart.css">
 	<!-- Icon -->
-		<link rel="icon" type="image/png" href="../Images/logo.png">
+	<link rel="icon" type="image/png" href="../Images/logo.png">
 
 
 	<!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@100..900&display=swap"
+		rel="stylesheet">
 
 	<!-- Lottie Player -->
 	<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 	<!-- JavaScript -->
 	<script src="main.js"></script>
-	
+
 </head>
+
 <body>
 	<!-- Loader -->
 	<div id="loader">
-        <lottie-player
-			src="../Animations/Loader cat.json"
-			background="transparent"
-			speed="1"
-			style="width: 200px; height: 200px;"
-			loop
-			autoplay>
-        </lottie-player>
-    </div>
+		<lottie-player src="../Animations/Loader cat.json" background="transparent" speed="1"
+			style="width: 200px; height: 200px;" loop autoplay>
+		</lottie-player>
+	</div>
 
 	<!-- Navigation bar starting-->
 
-    <nav class="navbar">
+	<nav class="navbar">
 		<div class="navdiv">
 			<div class="logo"><a href="../index.html">WRDZZ</a></div>
 			<ul>
@@ -53,18 +52,43 @@
 
 	<!-- Navigation bar ending -->
 
+	<main class="cart-section">
+		<h1>My Cart</h1>
+		<div class="cart-container">
+			<table class="cart-table">
+				<thead>
+					<tr>
+						<th>Book</th>
+						<th>Title</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						<th>Subtotal</th>
+						<th>Remove</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Dynamically adding books -->
+				</tbody>
+			</table>
 
+			<div class="cart-summary">
+				<h3>Total: <span id="cart-total">₹0</span></h3>
+				<button class="checkout-btn">Checkout</button>
+			</div>
+		</div>
+	</main>
 
 	<!-- Footer section starts -->
 
 	<footer class="footer">
 		<div class="footer-inner">
 			<div class="footer-brand">
-				<a class="logo" href="../index.html"><span style="font-family: archivo black; color: var(--background-color); font-size: 36px;">WRDZZ</span></a>
+				<a class="logo" href="../index.html"><span
+						style="font-family: archivo black; color: var(--background-color); font-size: 36px;">WRDZZ</span></a>
 				<p class="tagline">Books, quotes & vibes — curated by Mann</p>
 			</div>
-	
-	
+
+
 			<div class="footer-column">
 				<h3>Quick Links</h3>
 				<ul>
@@ -75,13 +99,14 @@
 					<li><a href="about.html">About Us</a></li>
 				</ul>
 			</div>
-	
-	
+
+
 			<div class="footer-column">
 				<h3>Follow</h3>
 				<ul class="social-list">
 					<li>
-						<a href="https://www.instagram.com/manndoesedits" target="_blank" aria-label="Instagram">Instagram</a>
+						<a href="https://www.instagram.com/manndoesedits" target="_blank"
+							aria-label="Instagram">Instagram</a>
 					</li>
 					<li>
 						<a href="https://github.com/Mannloser" target="_blank" aria-label="GitHub">GitHub</a>
@@ -89,15 +114,16 @@
 				</ul>
 			</div>
 		</div>
-	
-	
+
+
 		<div class="footer-bottom">
 			<p>© <span id="year">2025</span> WRDZZ. All rights reserved. | Designed &amp; Developed by Mann</p>
 		</div>
-	
-	
+
+
 		<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-	</footer >
+	</footer>
 
 </body>
+
 </html>

@@ -149,22 +149,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const books = [
-    { title: "Harry potter complete edition", price: "$12.99", img: "../Images/Book covers/Harry potter.png" },
-    { title: "A silent voice", price: "$19.99", img: "../Images/Book covers/A silent voice.png" },
-    { title: "To Kill a Mockingbird", price: "$29.99", img: "../Images/Book covers/To Kill a Mockingbird by Harper Lee.png" },
-    { title: "Atomic Habits", price: "$29.99", img: "../Images/Book covers/Atomic Habits.png" },
-    { title: "Ikigai", price: "$29.99", img: "../Images/Book covers/IKIGAI.png" },
-    { title: "Deep Work", price: "$21.99", img: "../Images/Book covers/Deep Work.png" },
-    { title: "Do Epic Sh*t", price: "$18.99", img: "../Images/Book covers/Do epic Shit.png" },
-    { title: "Gild", price: "$24.99", img: "../Images/Book covers/Gild.png" },
-    { title: "The Starless Sea", price: "$27.99", img: "../Images/Book covers/The Starless Sea.png" },
-    { title: "Six of Crows", price: "$22.99", img: "../Images/Book covers/Six of crows.png" },
-    { title: "The Alchemist", price: "$19.99", img: "../Images/Book covers/The Alchemist.png" }
+    { title: "Harry potter complete edition", price: 1299, img: "../Images/Book covers/Harry potter.png" },
+    { title: "A silent voice", price: 1999, img: "../Images/Book covers/A silent voice.png" },
+    { title: "To Kill a Mockingbird", price: 2999, img: "../Images/Book covers/To Kill a Mockingbird by Harper Lee.png" },
+    { title: "Atomic Habits", price: 1099, img: "../Images/Book covers/Atomic Habits.png" },
+    { title: "Ikigai", price: 899, img: "../Images/Book covers/IKIGAI.png" },
+    { title: "Deep Work", price: 1199, img: "../Images/Book covers/Deep Work.png" },
+    { title: "Do Epic Sh*t", price: 799, img: "../Images/Book covers/Do epic Shit.png" },
+    { title: "Gild", price: 1599, img: "../Images/Book covers/Gild.png" },
+    { title: "The Starless Sea", price: 1799, img: "../Images/Book covers/The Starless Sea.png" },
+    { title: "Six of Crows", price: 1499, img: "../Images/Book covers/Six of crows.png" },
+    { title: "The Alchemist", price: 999, img: "../Images/Book covers/The Alchemist.png" }
   ];
 
   const container = document.getElementById("booksContainer");
 
-  // Reusable function to render books
   function renderBooks(bookList) {
     container.innerHTML = "";
     if (bookList.length === 0) {
@@ -172,28 +171,48 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    bookList.forEach(book => {
+    bookList.forEach((book, index) => {
       const bookCard = `
-			<div class="book-card">
-				<div class="image-container">
-					<img src="${book.img}" alt="${book.title}">
-				</div>
-				<h3>${book.title}</h3>
-				<p>${book.price}</p>
-				<div class="book-actions">
-					<button class="buy-btn">Buy now</button>
-					<button class="add-btn">Add to cart</button>
-				</div>
-			</div>
-		`;
+        <div class="book-card">
+          <div class="image-container">
+            <img src="${book.img}" alt="${book.title}">
+          </div>
+          <h3>${book.title}</h3>
+          <p>₹${book.price}</p>
+          <div class="book-actions">
+            <button class="buy-btn">Buy now</button>
+            <button class="add-btn" data-index="${index}">Add to cart</button>
+          </div>
+        </div>
+      `;
       container.innerHTML += bookCard;
+    });
+
+    // attach add-to-cart listeners
+    document.querySelectorAll(".add-btn").forEach(btn => {
+      btn.addEventListener("click", e => {
+        const idx = e.target.dataset.index;
+        addToCart(books[idx]);
+      });
     });
   }
 
-  // Show all books on page load
-  renderBooks(books);
+  // --- CART LOGIC ---
+  function addToCart(book) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const existing = cart.find(item => item.title === book.title);
 
-  // Search function
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ ...book, qty: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`${book.title} added to cart 🛒`);
+  }
+
+  // search logic
   window.searchBooks = function () {
     const query = document.getElementById("bookSearch").value.toLowerCase();
     const filteredBooks = books.filter(book =>
@@ -202,8 +221,9 @@ document.addEventListener("DOMContentLoaded", () => {
     renderBooks(filteredBooks);
   };
 
-  // Enable instant search while typing
   document.getElementById("bookSearch").addEventListener("input", searchBooks);
+
+  renderBooks(books);
 });
 
 
@@ -277,3 +297,72 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCarousel(currentIndex);
 });
 // ...existing code...
+
+
+
+
+
+
+
+
+// === CART PAGE SCRIPT ===
+document.addEventListener("DOMContentLoaded", () => {
+  const tbody = document.querySelector(".cart-table tbody");
+  const totalEl = document.getElementById("cart-total");
+
+  if (!tbody) return; // only run on cart page
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  function renderCart() {
+    tbody.innerHTML = "";
+    let total = 0;
+
+    if (cart.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="6">Your cart is empty 🛒</td></tr>`;
+      totalEl.textContent = "₹0";
+      return;
+    }
+
+    cart.forEach((item, i) => {
+      const subtotal = item.price * item.qty;
+      total += subtotal;
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td><img src="${item.img}" class="cart-img" alt="${item.title}"></td>
+        <td>${item.title}</td>
+        <td data-price="${item.price}">₹${item.price}</td>
+        <td><input type="number" value="${item.qty}" min="1" class="qty-input" data-index="${i}"></td>
+        <td class="subtotal">₹${subtotal}</td>
+        <td><button class="remove-btn" data-index="${i}">✖</button></td>
+      `;
+      tbody.appendChild(row);
+    });
+
+    totalEl.textContent = `₹${total}`;
+  }
+
+  // quantity change
+  tbody.addEventListener("input", e => {
+    if (e.target.classList.contains("qty-input")) {
+      const idx = e.target.dataset.index;
+      cart[idx].qty = parseInt(e.target.value);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+  });
+
+  // remove button
+  tbody.addEventListener("click", e => {
+    if (e.target.classList.contains("remove-btn")) {
+      const idx = e.target.dataset.index;
+      cart.splice(idx, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+  });
+
+  // initial render
+  renderCart();
+});
