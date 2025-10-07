@@ -1,0 +1,104 @@
+
+.about-section {
+    padding: 150px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    color: var(--accent-color);
+}
+
+.about-hero {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.about-hero .text {
+    max-width: 640px;
+}
+
+.about-hero h1 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 44px;
+    margin: 0 0 8px;
+}
+
+.about-tagline {
+    font-size: 16px;
+    margin-bottom: 18px;
+    color: var(--accent-color);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    text-align: left;
+}
+
+.filled-btn{
+    color: var(--accent-color);
+    margin: 20px 0px;
+    width: auto;
+    max-width: 200px;
+}
+
+@media(min-width:900px) {
+    .about-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(16, 24, 40, 0.1);
+}
+
+.card h3 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.values-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.values-list li {   
+    color: var(--accent-color);
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.team {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.small-note {
+    color: var(--accent-color);
+    font-size: 14px;
+    margin-top: 14px;
+}
+
+
+
+
+.about-section::selection{
+    color: var(--background-color);
+    background: var(--primary-color);
+}
+
+

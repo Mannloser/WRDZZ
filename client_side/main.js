@@ -366,3 +366,120 @@ document.addEventListener("DOMContentLoaded", () => {
   // initial render
   renderCart();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ==== config ====
+const DEBOUNCE_MS = 280;
+
+// ==== helpers ====
+const $ = sel => document.querySelector(sel);
+const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+// ==== debounce ====
+let debounceTimer = null;
+function scheduleSearch() {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => searchBooks(), DEBOUNCE_MS);
+}
+
+// wire input debounce
+const input = $('#bookSearch');
+if (input) input.addEventListener('input', scheduleSearch);
+
+// category buttons behavior
+$$('.category-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    $$('.category-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    // sync mobile select
+    const cat = btn.dataset.cat || '';
+    const mobile = $('#mobileCat');
+    if (mobile) mobile.value = cat;
+    scheduleSearch();
+  });
+});
+
+// mobile select -> sync pills
+const mobileSelect = $('#mobileCat');
+if (mobileSelect) {
+  mobileSelect.addEventListener('change', (e) => {
+    const val = e.target.value || '';
+    $$('.category-btn').forEach(b => {
+      if ((b.dataset.cat || '') === val) b.classList.add('active');
+      else b.classList.remove('active');
+    });
+    scheduleSearch();
+  });
+}
+
+// clear button
+function clearSearch() {
+  const i = $('#bookSearch');
+  if (i) { i.value = ''; i.focus(); }
+  scheduleSearch();
+}
+
+// main search function
+function searchBooks() {
+  const query = ($('#bookSearch') && $('#bookSearch').value.trim()) || '';
+  const catBtn = document.querySelector('.category-btn.active');
+  const category = (catBtn && (catBtn.dataset.cat || '')) || (('#mobileCat' in window && $('#mobileCat').value) || '');
+  const payload = { query, category, ts: Date.now() };
+
+  // 1) If you already have a frontend list of books, filter locally (optional)
+  //    window.__booksData can be an array of objects: { title, author, category, img, slug }
+  if (window.__booksData && Array.isArray(window.__booksData)) {
+    const q = query.toLowerCase();
+    const results = window.__booksData.filter(b => {
+      const matchesCategory = !category || (b.category && b.category.toLowerCase() === category.toLowerCase());
+      const matchesQuery = !q || (b.title && b.title.toLowerCase().includes(q)) || (b.author && b.author.toLowerCase().includes(q));
+      return matchesCategory && matchesQuery;
+    });
+    // try to update a grid if present
+    const grid = document.getElementById('booksGrid');
+    if (grid) {
+      grid.innerHTML = '';
+      if (results.length === 0) grid.innerHTML = `<div class="no-results">No books found.</div>`;
+      else results.forEach(b => {
+        const item = document.createElement('div');
+        item.className = 'book-card';
+        item.innerHTML = `
+          <a href="${b.href || '#'}" class="book-link">
+            <img src="${b.img || ''}" alt="${b.title || 'book'}" loading="lazy"/>
+            <div class="meta"><strong>${b.title || ''}</strong><span>${b.author || ''}</span></div>
+          </a>`;
+        grid.appendChild(item);
+      });
+    }
+  }
+
+  // 2) Dispatch an event so your backend/search layer can catch it
+  window.dispatchEvent(new CustomEvent('wrddz:search', { detail: payload }));
+
+  // 3) If you already have a global handler like `window.handleBookSearch`, call it:
+  if (typeof window.handleBookSearch === 'function') {
+    window.handleBookSearch(payload);
+  }
+}
+
+// optional: let Enter do search (form prevents default already)
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') clearSearch();
+});
