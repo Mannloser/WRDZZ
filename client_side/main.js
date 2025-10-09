@@ -234,11 +234,6 @@ document.addEventListener("DOMContentLoaded", () => {
    SECTION 7: CAROUSEL FUNCTIONALITY
    =========================== */
 
-// ...existing code...
-
-/* ===========================
-   SECTION 7: CAROUSEL FUNCTIONALITY
-   =========================== */
 
 document.addEventListener("DOMContentLoaded", () => {
   const track = document.querySelector(".carousel-track");

@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bookstore Admin Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./CSS/style.css">
+
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">BS</div>
+        <div>
+          <h1>Bookstore Admin</h1>
+          <p>Crimson Blaze theme</p>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="active" data-page="dashboard">🏠 Dashboard</button>
+        <button data-page="books">📚 Manage Books</button>
+        <button data-page="users">👥 Manage Users</button>
+        <button data-page="orders">🧾 Orders</button>
+      </nav>
+
+      <div class="side-footer muted">Logged in as <strong>admin@bookstore.com</strong></div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <input id="globalSearch" placeholder="Search books, users, orders..." />
+        </div>
+        <div class="actions">
+          <button class="btn" id="quickAdd">+ Add Book</button>
+          <div style="display:none;flex-direction:column;align-items:flex-end">
+            <div class="muted" id="currentDate"></div>
+            <div class="muted">Admin panel</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- pages -->
+      <section id="dashboard" class="page">
+        <div class="grid">
+          <div class="card col-3">
+            <div class="kpi">
+              <div class="label">Total Revenue</div>
+              <div class="big" id="kpiRevenue">₹0</div>
+              <div class="muted">This month</div>
+            </div>
+          </div>
+          <div class="card col-3">
+            <div class="kpi">
+              <div class="label">Orders</div>
+              <div class="big" id="kpiOrders">0</div>
+              <div class="muted">Total orders</div>
+            </div>
+          </div>
+          <div class="card col-3">
+            <div class="kpi">
+              <div class="label">Books</div>
+              <div class="big" id="kpiBooks">0</div>
+              <div class="muted">Inventory</div>
+            </div>
+          </div>
+          <div class="card col-3">
+            <div class="kpi">
+              <div class="label">Active Users</div>
+              <div class="big" id="kpiUsers">0</div>
+              <div class="muted">Signed up</div>
+            </div>
+          </div>
+
+          <div class="card col-6">
+            <h3 style="margin-top:0">Monthly Revenue</h3>
+            <div class="chart-wrap">
+              <canvas id="revenueChart" width="640" height="200"></canvas>
+            </div>
+          </div>
+
+          <div class="card col-6">
+            <h3 style="margin-top:0">Recent Orders</h3>
+            <table>
+              <thead>
+                <tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th></tr>
+              </thead>
+              <tbody id="recentOrders"></tbody>
+            </table>
+          </div>
+
+          <div class="card col-12">
+            <h3 style="margin-top:0">Quick Actions</h3>
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <button class="btn" id="goBooks">Manage Books</button>
+              <button class="btn ghost" id="goUsers">Manage Users</button>
+              <button class="btn ghost" id="goOrders">View Orders</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="books" class="page" style="display:none">
+        <div class="grid">
+          <div class="card col-12" style="display:flex;align-items:center;justify-content:space-between">
+            <div>
+              <h2 style="margin:0">Books</h2>
+              <p class="muted">Add, edit or remove books from inventory</p>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <input id="bookSearch" class="input" placeholder="Search title / author" />
+              <button class="btn" id="addBookBtn">+ New Book</button>
+            </div>
+          </div>
+
+          <div class="card col-12">
+            <table id="booksTable">
+              <thead><tr><th>Title</th><th>Author</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="users" class="page" style="display:none">
+        <div class="grid">
+          <div class="card col-12" style="display:flex;align-items:center;justify-content:space-between">
+            <div>
+              <h2 style="margin:0">Users</h2>
+              <p class="muted">Manage user accounts</p>
+            </div>
+            <div>
+              <input id="userSearch" class="input" placeholder="Search users" />
+            </div>
+          </div>
+
+          <div class="card col-12">
+            <table id="usersTable">
+              <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="orders" class="page" style="display:none">
+        <div class="grid">
+          <div class="card col-12" style="display:flex;align-items:center;justify-content:space-between">
+            <div>
+              <h2 style="margin:0">Orders</h2>
+              <p class="muted">View and update order statuses</p>
+            </div>
+            <div>
+              <input id="orderSearch" class="input" placeholder="Search orders" />
+            </div>
+          </div>
+
+          <div class="card col-12">
+            <table id="ordersTable">
+              <thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="settings" class="page" style="display:none">
+        <div class="grid">
+          <div class="card col-12">
+            <h2 style="margin:0">Settings</h2>
+            <p class="muted">Theme colors (live preview)</p>
+            <div style="display:flex;gap:12px;align-items:center;margin-top:12px">
+              <label class="muted">Primary <input id="colorPrimary" type="color" value="#7d0a0a" /></label>
+              <label class="muted">Secondary <input id="colorSecondary" type="color" value="#8a3832" /></label>
+              <button class="btn" id="resetTheme">Reset</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Modal: Book Form -->
+  <div class="modal" id="bookModal">
+    <div class="panel">
+      <h3 id="modalTitle">Add Book</h3>
+      <div style="height:10px"></div>
+      <div class="form-row">
+        <div class="col">
+          <label class="muted">Title</label>
+          <input id="bookTitle" class="input" />
+        </div>
+        <div class="col">
+          <label class="muted">Author</label>
+          <input id="bookAuthor" class="input" />
+        </div>
+      </div>
+      <div style="height:10px"></div>
+      <div class="form-row">
+        <div class="col">
+          <label class="muted">Price (₹)</label>
+          <input id="bookPrice" class="input" type="number" />
+        </div>
+        <div class="col">
+          <label class="muted">Stock</label>
+          <input id="bookStock" class="input" type="number" />
+        </div>
+      </div>
+      <div style="height:14px"></div>
+      <div style="display:flex;justify-content:flex-end;gap:8px">
+        <button class="btn ghost" id="cancelModal">Cancel</button>
+        <button class="btn" id="saveBook">Save</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
